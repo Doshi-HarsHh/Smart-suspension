@@ -1,24 +1,17 @@
-# Smart-suspension System
-**It's a semi-active suspension system actuated by servo motors, regulated by Fuzzy Logic. Its input sources include a MPU6050 sensor and data from object detection being run on a Raspberry pi 5. The object detection is executed using YOLOv8, Model trained on Google Colab using datasets obtained from Roboflow.**
+# Smart-Suspension
+Welcome to Smart-Suspension, an innovative suspension system designed to enhance both safety and comfort in four-wheeled vehicles. This project combines fuzzy logic and deep learning techniques to create an intelligent suspension system that adapts to road conditions in real-time.
 
-its is divide in 2 parts, **The Fuzzy Logic** and the **Object detection** part.
-# Part 1: Fuzzy Logic
-Fuzzy logic is a mathematical framework that handles imprecise or uncertain information by allowing degrees of truth.
+# **Key Features**:
 
-
-There are majorly in 4 steps in a Fuzzy Logic based System:
-1. Mapping inputs to linguistic variables.
-2. Applying Fuzzy Sets and Memberships functions to it to quantify the uncertainty.
-3. Make decisions based on pre determined rules based on the inputs and
-4. Finally, it aggregates the results using fuzzy inference systems to produce precise output.
-
-# Here:
-
-**The Inputs are** : Speed of the Vehicle and The intensity of the instability on road , may it be pothole or a hump.
-
-The speed may vary from 0-120 km/hr value & The Bump intensity would be measured by the MPU6050, a mems IMU.It had a range of -1 to 1.
-
-**The output is** : Stiffness of suspension system. ranging from 0.0 to 1.0
+**Fuzzy Logic Control**: The system employs a custom-developed Sugeno Type 2 Fuzzy Inference System (FIS) implemented on Arduino with MATLAB's support. This FIS considers two primary inputs: vehicle speed and the severity of encountered bumps or potholes. Leveraging the Sugeno Type 2 FIS enables accurate decision-making in the presence of uncertainty and imprecision.
 
 
+**Sensor Integration**: Utilizing the MPU6050 sensor, the system detects Z-axis motion to identify bumps or potholes during vehicle operation.
 
+
+**Dynamic Suspension Adjustment**: If the vehicle experiences instability exceeding a predefined threshold due to road irregularities, the FIS triggers a servo motor. This motor dynamically adjusts the suspension stiffness based on real-time inputs, ensuring optimal vehicle stability and ride comfort.
+
+
+**Deep Learning Enhancement**: To address the system's reactive nature post-instability, an instance segmentation technique powered by deep learning is integrated. This technique, deployed on a Raspberry Pi 5 single-board computer with a camera, detects road obstacles ahead, allowing proactive suspension adjustments for a smoother and safer ride.
+
+**Yolo V5 Model**: The instance segmentation model is trained on a custom dataset comprising images of potholes and bumps. Leveraging the efficiency and accuracy of Yolo V5, a state-of-the-art deep learning model, ensures real-time detection performance.
